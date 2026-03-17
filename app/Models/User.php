@@ -19,7 +19,7 @@ class User extends Authenticatable
         'telephone',
         'score_confiance',
         'role',
-        'date_creation',
+       
     ];
 
     protected $hidden = [
@@ -27,8 +27,7 @@ class User extends Authenticatable
     ];
 
     protected $casts = [
-        'date_creation' => 'datetime',
-        'score_confiance' => 'integer',
+       'score_confiance' => 'integer',
     ];
 
   

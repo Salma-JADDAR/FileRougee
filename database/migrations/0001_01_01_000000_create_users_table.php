@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('telephone')->nullable();           
             $table->integer('score_confiance')->default(50);
             $table->enum('role', ['standard', 'verifie', 'admin'])->default('standard'); 
-            $table->datetime('date_creation');                 
             $table->timestamps();                              
         });
     }
