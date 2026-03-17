@@ -98,6 +98,7 @@ class User extends Authenticatable
     public function favoris()
     {
         return $this->belongsToMany(Annonce::class, 'favoris', 'user_id', 'annonce_id')
+                    ->withPivot('date_ajout')
                     ->withTimestamps();
     }
 
