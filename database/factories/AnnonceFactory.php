@@ -19,7 +19,6 @@ class AnnonceFactory extends Factory
             'prix' => $this->faker->numberBetween(100, 2000),
             'etat' => $this->faker->randomElement(['brouillon', 'en_attente', 'publiee', 'vendue']),
             'nb_vues' => $this->faker->numberBetween(0, 100),
-            'date_creation' => now(),
             'date_publication' => now(),
             'user_id' => User::factory(),
             'espece_id' => Espece::factory(),

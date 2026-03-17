@@ -15,11 +15,10 @@ return new class extends Migration
             $table->decimal('prix', 10, 2);
             $table->enum('etat', ['brouillon','en_attente','publiee','vendue', 'archivee'])->default('brouillon');
             $table->integer('nb_vues')->default(0);
-            $table->datetime('date_creation');
-            $table->datetime('date_publication')->nullable();
+            $table->datetime('date_publication')->nullable(); 
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('espece_id')->constrained();
-            $table->timestamps();
+            $table->timestamps(); 
         });
     }
 
