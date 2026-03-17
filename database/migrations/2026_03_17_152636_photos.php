@@ -9,11 +9,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('photos', function (Blueprint $table) {
-            $table->id();                                      
-            $table->string('nom_fichier');                     
-            $table->string('chemin_stockage');                 
+            $table->id();
+            $table->string('nom_fichier');
+            $table->string('chemin_stockage');
             $table->boolean('est_principale')->default(false); 
-            $table->datetime('date_upload');                 
+            $table->datetime('date_upload');
             $table->foreignId('annonce_id')->constrained()->onDelete('cascade'); 
             $table->timestamps();
         });

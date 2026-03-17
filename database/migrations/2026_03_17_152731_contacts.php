@@ -9,16 +9,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('contacts', function (Blueprint $table) {
-            $table->id();                                      
-            $table->text('message');                           
-            $table->string('nom_acheteur');                    
-            $table->string('email_acheteur_masque');           
-            $table->datetime('date_envoi');                    
+            $table->id();
+            $table->text('message');
+            $table->string('nom_acheteur');
+            $table->string('email_acheteur_masque');
+            $table->datetime('date_envoi');
             $table->foreignId('annonce_id')->constrained()->onDelete('cascade'); 
             $table->foreignId('expediteur_id')->constrained('users')->onDelete('cascade'); 
             $table->foreignId('destinataire_id')->constrained('users')->onDelete('cascade'); 
             $table->timestamps();
-            
+
         });
     }
 
