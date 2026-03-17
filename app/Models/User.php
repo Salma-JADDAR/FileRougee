@@ -2,48 +2,56 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Collection;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
     protected $fillable = [
-        'name',
         'email',
         'password',
+        'nom',
+        'prenom',
+        'ville',
+        'telephone',
+        'score_confiance',
+        'date_creation',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
+    protected $casts = [
+        'date_creation' => 'datetime',
+        'score_confiance' => 'integer',
+    ];
+
+  
+    public function annonces()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->hasMany(Annonce::class, 'user_id');
     }
+
+  
+    public function favoris()
+    {
+        return $this->belongsToMany(Annonce::class, 'favoris', 'user_id', 'annonce_id')
+                    ->withTimestamps();
+    }
+
+   
+    public function consulterMesAnnonces(): Collection
+    {
+        return $this->annonces()->get();
+    }
+
+    public function getMesFavoris(): Collection
+    {
+        return $this->favoris()->get();
+    }
+
 }
