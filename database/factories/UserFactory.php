@@ -21,7 +21,7 @@ class UserFactory extends Factory
             'telephone' => $this->faker->optional()->phoneNumber(),
             'score_confiance' => $this->faker->numberBetween(30, 100),
             'role' => 'standard',
-            'date_creation' => $this->faker->dateTimeBetween('-1 year', 'now'),
+          
         ];
     }
 
