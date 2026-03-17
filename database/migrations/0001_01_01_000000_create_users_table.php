@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-   
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
@@ -17,13 +16,13 @@ return new class extends Migration
             $table->string('prenom');                          
             $table->string('ville');                          
             $table->string('telephone')->nullable();           
-            $table->integer('score_confiance')->default(50);   
+            $table->integer('score_confiance')->default(50);
+            $table->enum('role', ['standard', 'verifie', 'admin'])->default('standard'); 
             $table->datetime('date_creation');                 
             $table->timestamps();                              
         });
     }
 
-    
     public function down(): void
     {
         Schema::dropIfExists('users');
