@@ -9,11 +9,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class AnnonceController extends Controller
-{
-    // Liste des annonces (publique)
-    public function index()
-    {
+class AnnonceController extends Controller{
+    
+    public function index(){
         $annonces = Annonce::with(['utilisateur', 'espece', 'photos'])
             ->where('etat', 'publiee')
             ->latest()
