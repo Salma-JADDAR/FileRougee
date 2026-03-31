@@ -121,8 +121,7 @@ class AnnonceController extends Controller{
     }
 
     // Marquer comme vendue
-    public function vendue(Annonce $annonce)
-    {
+    public function vendue(Annonce $annonce){
         if ($annonce->user_id !== Auth::id()) {
             abort(403);
         }
