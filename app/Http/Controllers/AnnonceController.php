@@ -20,9 +20,8 @@ class AnnonceController extends Controller{
         return view('annonces.index', compact('annonces'));
     }
 
-    // Formulaire création
-    public function create()
-    {
+    
+    public function create(){
         $especes = Espece::where('est_active', true)->get();
         return view('annonces.create', compact('especes'));
     }
