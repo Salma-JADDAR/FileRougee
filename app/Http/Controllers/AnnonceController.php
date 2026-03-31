@@ -158,13 +158,12 @@ class AnnonceController extends Controller{
         return redirect()->route('mes-annonces')->with('success', 'Annonce supprimée.');
     }
     
-    // Mes annonces - Version avec requête directe
-    public function mesAnnonces()
-    {
-        // Récupérer l'ID de l'utilisateur
+   
+    public function mesAnnonces(){
+      
         $userId = Auth::id();
         
-        // Requête directe sans utiliser la relation
+   
         $annonces = Annonce::where('user_id', $userId)
             ->with('espece')
             ->latest()
