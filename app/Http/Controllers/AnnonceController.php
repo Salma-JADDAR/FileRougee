@@ -91,9 +91,8 @@ class AnnonceController extends Controller{
         return view('annonces.edit', compact('annonce', 'especes'));
     }
 
-    // Modifier
-    public function update(Request $request, Annonce $annonce)
-    {
+ 
+   public function update(Request $request, Annonce $annonce){
         if ($annonce->user_id !== Auth::id()) {
             abort(403);
         }
@@ -108,7 +107,7 @@ class AnnonceController extends Controller{
         $annonce->update($request->all());
         
         return redirect()->route('annonces.show', $annonce)->with('success', 'Annonce modifiée !');
-    }
+    } 
 
     // Soumettre pour validation
     public function soumettre(Annonce $annonce)
