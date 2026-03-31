@@ -28,9 +28,8 @@ class AuthController extends Controller{
         return back()->withErrors(['email' => 'Email ou mot de passe incorrect']);
     }
     
-    // Afficher formulaire inscription
-    public function showRegister()
-    {
+    
+    public function showRegister(){
         return view('auth.register');
     }
     
