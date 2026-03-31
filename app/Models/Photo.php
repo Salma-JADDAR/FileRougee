@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
-class Photo extends Model
-{
+class Photo extends Model{
     use HasFactory;
 
     protected $table = 'photos';
@@ -27,14 +26,12 @@ class Photo extends Model
     ];
 
 
-    public function annonce()
-    {
+    public function annonce(){
         return $this->belongsTo(Annonce::class);
     }
 
     
-    public function uploader(UploadedFile $fichier): void
-    {
+    public function uploader(UploadedFile $fichier): void{
     
         $nom = time() . '_' . $fichier->getClientOriginalName();
         $chemin = $fichier->storeAs('photos/annonces', $nom, 'public');
@@ -46,16 +43,14 @@ class Photo extends Model
     }
 
 
-    public function supprimer(): void
-    {
+    public function supprimer(): void{
   
         if ($this->chemin_stockage) {
             Storage::disk('public')->delete($this->chemin_stockage);
         }
         $this->delete();
     }
-    public function getUrlAttribute(): string
-    {
+    public function getUrlAttribute(): string{
         return Storage::url($this->chemin_stockage);
     }
 }

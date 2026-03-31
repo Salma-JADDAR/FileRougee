@@ -5,12 +5,10 @@ namespace Database\Factories;
 use App\Models\Espece;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class EspeceFactory extends Factory
-{
+class EspeceFactory extends Factory{
     protected $model = Espece::class;
 
-    public function definition(): array
-    {
+    public function definition(): array{
         $categories = ['Psittacidés', 'Passereaux', 'Colombidés', 'Gallinacés', 'Autres'];
         
         return [
@@ -22,13 +20,11 @@ class EspeceFactory extends Factory
         ];
     }
 
-    public function active()
-    {
+    public function active(){
         return $this->state(['est_active' => true]);
     }
 
-    public function inactive()
-    {
+    public function inactive(){
         return $this->state(['est_active' => false]);
     }
 }

@@ -7,12 +7,10 @@ use App\Models\User;
 use App\Models\Annonce;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ContactFactory extends Factory
-{
+class ContactFactory extends Factory{
     protected $model = Contact::class;
 
-    public function definition(): array
-    {
+    public function definition(): array{
         return [
             'message' => $this->faker->paragraph(2),
             'nom_acheteur' => $this->faker->name(),

@@ -6,12 +6,10 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 
-class UserFactory extends Factory
-{
+class UserFactory extends Factory{
     protected $model = User::class;
 
-    public function definition(): array
-    {
+    public function definition(): array{
         return [
             'email' => $this->faker->unique()->safeEmail(),
             'password' => Hash::make('password'),
@@ -25,8 +23,7 @@ class UserFactory extends Factory
         ];
     }
 
-    public function standard()
-    {
+    public function standard(){
         return $this->state([
             'role' => 'standard',
             'score_confiance' => $this->faker->numberBetween(30, 69),

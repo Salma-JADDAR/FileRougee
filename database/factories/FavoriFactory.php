@@ -7,12 +7,10 @@ use App\Models\User;
 use App\Models\Annonce;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class FavoriFactory extends Factory
-{
+class FavoriFactory extends Factory{
     protected $model = Favori::class;
 
-    public function definition(): array
-    {
+    public function definition(): array{
         return [
             'user_id' => User::factory(),
             'annonce_id' => Annonce::factory(),

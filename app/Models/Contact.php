@@ -5,8 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Contact extends Model
-{
+class Contact extends Model{
     use HasFactory;
 
     protected $fillable = [
@@ -23,18 +22,15 @@ class Contact extends Model
         'date_envoi' => 'datetime',
     ];
 
-    public function annonce()
-    {
+    public function annonce(){
         return $this->belongsTo(Annonce::class);
     }
 
-    public function expediteur()
-    {
+    public function expediteur(){
         return $this->belongsTo(User::class, 'expediteur_id');
     }
 
-    public function destinataire()
-    {
+    public function destinataire(){
         return $this->belongsTo(User::class, 'destinataire_id');
     }
 }

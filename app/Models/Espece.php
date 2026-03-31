@@ -5,8 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Espece extends Model
-{
+class Espece extends Model{
     use HasFactory;
 
     protected $table = 'especes';
@@ -26,44 +25,37 @@ class Espece extends Model
     ];
 
 
-    public function annonces()
-    {
+    public function annonces(){
         return $this->hasMany(Annonce::class);
     }
 
-    public function ajouter(): void
-    {
+    public function ajouter(): void{
         $this->save();
     }
 
-    public function modifier(array $data): void
-    {
+    public function modifier(array $data): void{
         $this->fill($data);
         $this->save();
     }
 
-    public function desactiver(): void
-    {
+    public function desactiver(): void{
         $this->est_active = false;
         $this->save();
     }
 
-    public function incrementerCompteur(): void
-    {
+    public function incrementerCompteur(): void{
         $this->nb_annonces_actives++;
         $this->save();
     }
 
-    public function decrementerCompteur(): void
-    {
+    public function decrementerCompteur(): void{
         if ($this->nb_annonces_actives > 0) {
             $this->nb_annonces_actives--;
             $this->save();
         }
     }
 
-    public function activer(): void
-    {
+    public function activer(): void{
         $this->est_active = true;
         $this->save();
     }

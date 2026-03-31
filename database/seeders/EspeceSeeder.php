@@ -5,10 +5,8 @@ namespace Database\Seeders;
 use App\Models\Espece;
 use Illuminate\Database\Seeder;
 
-class EspeceSeeder extends Seeder
-{
-    public function run(): void
-    {
+class EspeceSeeder extends Seeder{
+    public function run(): void{
     
         Espece::factory()->active()->count(10)->create();
         Espece::factory()->inactive()->count(5)->create();

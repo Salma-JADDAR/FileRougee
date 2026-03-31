@@ -6,8 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
 
-class Annonce extends Model
-{
+class Annonce extends Model{
     use HasFactory;
 
     protected $table = 'annonces';
@@ -30,53 +29,44 @@ class Annonce extends Model
     ];
 
    
-    public function utilisateur()
-    {
+    public function utilisateur(){
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function espece()
-    {
+    public function espece(){
         return $this->belongsTo(Espece::class);
     }
 
-    public function photos()
-    {
+    public function photos(){
         return $this->hasMany(Photo::class);
     }
 
-    public function favoris()
-    {
+    public function favoris(){
         return $this->belongsToMany(User::class, 'favoris', 'annonce_id', 'user_id')
                     ->withTimestamps();
     }
 
-    public function getUtilisateursFavoris(): Collection
-    {
+    public function getUtilisateursFavoris(): Collection{
         return $this->favoris()->get();
     }
 
-    public function estEnFavoriPar(User $user): bool
-    {
+    public function estEnFavoriPar(User $user): bool{
         return $this->favoris()->where('user_id', $user->id)->exists();
     }
 
   
-    public function compteFavoris(): int
-    {
+    public function compteFavoris(): int{
         return $this->favoris()->count();
     }
 
   
-    public function soumettreValidation(): void
-    {
+    public function soumettreValidation(): void{
         $this->etat = 'en_attente';
         $this->save();
     }
 
    
-    public function modifier(array $nouvellesDonnees): void
-    {
+    public function modifier(array $nouvellesDonnees): void{
         if (isset($nouvellesDonnees['titre'])) {
             $this->titre = $nouvellesDonnees['titre'];
         }
@@ -94,39 +84,33 @@ class Annonce extends Model
     }
 
   
-    public function marquerVendue(): void
-    {
+    public function marquerVendue(): void{
         $this->etat = 'vendue';
         $this->save();
     }
 
-    public function archiver(): void
-    {
+    public function archiver(): void{
         $this->etat = 'archivee';
         $this->save();
     }
 
  
-    public function incrementerVues(): void
-    {
+    public function incrementerVues(): void{
         $this->nb_vues++;
         $this->save();
     }
 
   
-    public function getPhotoPrincipale(): ?Photo
-    {
+    public function getPhotoPrincipale(): ?Photo{
         return $this->photos()->where('est_principale', true)->first();
     }
 
    
-    public function peutEtreModifiee(): bool
-    {
+    public function peutEtreModifiee(): bool{
         return in_array($this->etat, ['brouillon', 'en_attente']);
     }
 
-    public function estPubliee(): bool
-    {
+    public function estPubliee(): bool{
         return $this->etat === 'publiee';
     }
 }

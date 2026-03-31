@@ -7,12 +7,10 @@ use App\Models\User;
 use App\Models\Espece;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class AnnonceFactory extends Factory
-{
+class AnnonceFactory extends Factory{
     protected $model = Annonce::class;
 
-    public function definition(): array
-    {
+    public function definition(): array{
         return [
             'titre' => $this->faker->sentence(3),
             'description' => $this->faker->paragraph(2),
