@@ -69,9 +69,7 @@ class AnnonceController extends Controller{
         }
     }
 
-    // Voir une annonce
-    public function show(Annonce $annonce)
-    {
+    public function show(Annonce $annonce){
         $annonce->incrementerVues();
         $annonce->load(['utilisateur', 'espece', 'photos']);
         
