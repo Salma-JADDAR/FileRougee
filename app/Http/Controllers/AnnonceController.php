@@ -81,9 +81,8 @@ class AnnonceController extends Controller{
         return view('annonces.show', compact('annonce', 'estFavori'));
     }
 
-    // Formulaire modification
-    public function edit(Annonce $annonce)
-    {
+
+    public function edit(Annonce $annonce){
         if ($annonce->user_id !== Auth::id()) {
             abort(403);
         }
