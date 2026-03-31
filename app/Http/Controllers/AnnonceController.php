@@ -109,9 +109,8 @@ class AnnonceController extends Controller{
         return redirect()->route('annonces.show', $annonce)->with('success', 'Annonce modifiée !');
     } 
 
-    // Soumettre pour validation
-    public function soumettre(Annonce $annonce)
-    {
+  
+    public function soumettre(Annonce $annonce){
         if ($annonce->user_id !== Auth::id()) {
             abort(403);
         }
