@@ -18,7 +18,6 @@ class Annonce extends Model
         'prix',
         'etat',
         'nb_vues',
-        'date_creation',
         'date_publication',
         'user_id',
         'espece_id',
@@ -27,7 +26,6 @@ class Annonce extends Model
     protected $casts = [
         'prix' => 'float',
         'nb_vues' => 'integer',
-        'date_creation' => 'datetime',
         'date_publication' => 'datetime',
     ];
 

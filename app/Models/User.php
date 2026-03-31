@@ -46,14 +46,14 @@ class User extends Authenticatable
         return $this->role === 'admin';
     }
 
-    public function getQuotaAnnoncesAttribute(): int
-    {
-        return match($this->role) {
-            'verifie' => 5,
-            'admin' => 999, 
-            default => 3,
-        };
-    }
+   public function getQuotaAnnoncesAttribute(): int
+{
+    return match($this->role) {
+        'verifie' => 5,
+        'admin' => 999,
+        default => 3, 
+    };
+}
 
     public function peutPublier(): bool
     {
@@ -67,12 +67,13 @@ class User extends Authenticatable
     }
 
  
-    public function peutAjouterFavori(): bool
-    {
-        if ($this->estAdmin() || $this->estVerifie()) return true;
-        
-        return $this->favoris()->count() < 20; 
-    }
+  public function peutAjouterFavori(): bool
+{
+    if ($this->estAdmin()) return true;
+    if ($this->estVerifie()) return true;
+    
+    return $this->favoris()->count() < 20;
+}
 
    
     public function aValidationAcceleree(): bool
