@@ -120,7 +120,7 @@ class AnnonceController extends Controller{
         return back()->with('success', 'Annonce soumise pour validation.');
     }
 
-    // Marquer comme vendue
+  
     public function vendue(Annonce $annonce){
         if ($annonce->user_id !== Auth::id()) {
             abort(403);
@@ -134,9 +134,8 @@ class AnnonceController extends Controller{
         return back()->with('success', 'Annonce marquée comme vendue.');
     }
 
-    // Supprimer
-    public function destroy(Annonce $annonce)
-    {
+  
+    public function destroy(Annonce $annonce){
         $userId = Auth::id();
         $user = Auth::user();
         
